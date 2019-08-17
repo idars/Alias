@@ -1,0 +1,41 @@
+.emojiscore {
+	display: flex;
+	margin: 8px;
+	flex-direction: column;
+}
+
+.emojiscore meter {
+	height: 4px;
+	margin: 4px 0px;
+	width: 48px;
+	/*
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    */
+	/* Bar color (Firefox) */
+	background: grey;
+}
+
+/* Bar color (Chrome) */
+
+.emojiscore meter::-webkit-meter-bar {
+	background: none;
+	/* Required to get rid of the default background property */
+	background-color: grey;
+}
+
+/* Gauge color (Chrome) */
+
+.emojiscore meter::-webkit-meter-optimum-value {
+	background: whitesmoke;
+}
+
+/* Gauge color (Firefox) */
+
+.emojiscore meter::-moz-meter-bar {
+	background: whitesmoke;
+}
+
+.emojiscore img {
+	width: 24px;
+}

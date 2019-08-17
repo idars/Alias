@@ -1,0 +1,25 @@
+.linelistitem {
+    max-width: 600px;
+}
+
+.linelistitem .overlay {
+    align-items: center;
+    background: #56CCF2;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.linelistitem .underlay {
+    align-items: center;
+    background: #303030;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.linelistitem .emojis {
+    display: flex;
+}
