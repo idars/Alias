@@ -1,13 +1,14 @@
 body {
-  margin: 0;
-  font-family: "Segoe UI", "Lato", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  background: #fdfeff;
+	margin: 0;
+	font-family: 
+		"Segoe UI", "Lato", "Roboto", "Oxygen", 
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 
+		"Helvetica Neue", sans-serif;
+	background: #fdfeff;
 }
 
 code {
-  font-family: "Consolas", "Courier New", monospace;
+	font-family: "Consolas", "Courier New", monospace;
 }
 
 a {

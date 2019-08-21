@@ -1,23 +1,54 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
-import './Navbar.css';
+import { Link, NavLink } from 'react-router-dom';
+import styled, { withTheme } from 'styled-components'
+
+const Bar = styled.div`
+	align-items: baseline;
+	background: #fdfeff;
+	color: #303030;
+	display: flex;
+	justify-content: space-between;
+	padding: 16px 12px;
+
+	.title {
+		font-size: ${props => props.theme.textMedium}
+	}
+
+	@media(max-width: ${props => props.theme.screenMedium}) {
+		justify-content: space-around;
+	}
+`;
+
+const StyledLink = styled(Link)`
+	margin: 0px 12px;
+
+	@media(max-width: ${props => props.theme.screenMedium}) {
+		visibility: hidden;
+	}
+`;
+
+const StyledNavLink = styled(NavLink)`
+	margin: 0px 12px;
+`;
 
 class Navbar extends React.Component {
 	render() {
 		return (
-			<div className="navbar">
-				<div>
-					<NavLink className="title item" to="/">{this.props.appName}</NavLink>
+			<Bar className={this.props.className}>
+				<div className="title">
+					<StyledLink to="/">{this.props.appName}</StyledLink>
 				</div>
 				<nav>
-					<NavLink className="item" to="/timeline">Tidslinje</NavLink>
-					<NavLink className="item" to="/procedures">Prosedyrer</NavLink>
-					<NavLink className="item" to="/summary">Sammendrag</NavLink>
-					<NavLink className="item" to="/profile">Profil</NavLink>
+					<StyledNavLink to="/timeline">Tidslinje</StyledNavLink>
+					<StyledNavLink to="/procedures">Prosedyrer</StyledNavLink>
+					<StyledNavLink to="/summary">Sammendrag</StyledNavLink>
 				</nav>
-			</div>
+				<div>
+					<StyledLink to="/profile">Profil</StyledLink>
+				</div>
+			</Bar>
 		);
 	}
 }
 
-export { Navbar as default };
+export default withTheme(Navbar);

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import EmojiScore from 'components/emojis/EmojiScore';
 import EmojiStatus from 'components/emojis/EmojiStatus';
 import styled, { withTheme } from 'styled-components';
-// import './LineListItem.css';
 
 const itemWidth = '600px';
 

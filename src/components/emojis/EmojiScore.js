@@ -1,7 +1,6 @@
 import React from 'react';
 import Twemoji from 'react-twemoji';
 import styled, { withTheme } from 'styled-components'
-// import './EmojiScore.css';
 
 const StyledTwemoji = styled(Twemoji)`
 	img {
@@ -22,7 +21,7 @@ const Div = styled.div`
 	margin: 8px;
 
 	${Meter} {
-		/* Gauge color (Chrome) */
+		/* Gauge color (Chromium) */
 		&::-webkit-meter-optimum-value {
 			background: ${props => props.gaugeColor || "whitesmoke"};
 		}
@@ -32,14 +31,14 @@ const Div = styled.div`
 			background: ${props => props.gaugeColor || "whitesmoke"};
 		}
 
-		/* Bar color (Firefox) */
-		background: ${props => props.barColor || "grey"};
-
-		/* Bar color (Chrome) */
+		/* Bar color (Chromium) */
 		&::-webkit-meter-bar {
 			background: none;
 			background-color: ${props => props.barColor || "grey"};
 		}
+
+		/* Bar color (Firefox) */
+		background: ${props => props.barColor || "grey"};
 	}
 `;
 
