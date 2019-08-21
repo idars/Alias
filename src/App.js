@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { Light, Spacious } from 'services/Themes.js'
+import { Light, Spacious } from 'services/Themes.js';
 
 import Navbar from 'components/Navbar.js';
 import Home from 'pages/Home.js';

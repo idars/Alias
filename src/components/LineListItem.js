@@ -20,7 +20,7 @@ const Underlay = styled.div`
 	align-items: center;
     background: #303030;
     color: #ffffff;
-    display: flex;
+    display: ${props => props.active ? 'flex' : 'none'};
 	justify-content: space-between;
 	max-width: ${itemWidth};
 	padding: 8px;
@@ -31,9 +31,24 @@ const Underlay = styled.div`
 `;
 
 class LineListItem extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			dropdown: false
+		};
+
+		this.toggleDropdown = this.toggleDropdown.bind(this);
+	}
+
 	getRating(index) {
 		if (this.props.rating === undefined) return 0;
 		return this.props.rating[index];
+	}
+
+	toggleDropdown(e) {
+		this.setState(state => ({
+			dropdown: !state.dropdown
+		}));
 	}
 
 	render() {
@@ -41,9 +56,9 @@ class LineListItem extends React.Component {
 			<div className={this.props.className}>
 				<Overlay>
 					<Link to="/">{this.props.name || 'Element uten navn'}</Link>
-					<EmojiStatus>{this.props.emojiStatus}</EmojiStatus>
+					<EmojiStatus onClick={this.toggleDropdown}>{this.props.emojiStatus}</EmojiStatus>
 				</Overlay>
-				<Underlay>
+				<Underlay active={this.state.dropdown}>
 					<div>
 						<EmojiScore emoji="😀" value={this.getRating(0)} gaugeColor={this.props.theme.happy} />
 						<EmojiScore emoji="😢" value={this.getRating(1)} gaugeColor={this.props.theme.sad} />
