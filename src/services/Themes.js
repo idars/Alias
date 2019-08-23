@@ -20,6 +20,11 @@ export const Spacious = {
 		small: '16px',
 		medium: '22px',
 		big: '30px'
+	},
+	thickness: {
+		small: '1px',
+		medium: '2px',
+		big: '3px'
 	}
 }
 

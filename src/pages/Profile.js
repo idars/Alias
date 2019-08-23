@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTheme } from 'styled-components';
 
 function Profile() {
 	return (
@@ -8,4 +9,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default withTheme(Profile);

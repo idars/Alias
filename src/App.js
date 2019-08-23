@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import Navbar from 'components/Navbar.js';
+import Navbar from 'components/Navbar';
 import Home from 'pages/Home';
 import PageNotFound from 'pages/PageNotFound';
 import Procedure from 'pages/Procedure';
@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
 	svg {
 		height: ${props => props.theme.icon.medium};
 		width: ${props => props.theme.icon.medium};
+		stroke-width: ${props => props.theme.thickness.medium};
 
 		:hover {
 			cursor: pointer

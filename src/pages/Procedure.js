@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
-import { ArrowLeft, ArrowRight, X } from 'react-feather';
 import { withRouter } from 'react-router-dom';
+import styled, { withTheme } from 'styled-components';
+import { ArrowLeft, ArrowRight, X } from 'styled-icons/feather';
 
 import Emoji from 'components/emojis/Emoji';
 
@@ -19,7 +19,7 @@ class Procedure extends React.Component {
             <div>
                 <div>
                     <X onClick={this.props.history.goBack} />
-                    <span>{this.props.procedureName}</span>
+                    <span>{this.props.procedureName || 'Prosedyre uten navn'}</span>
                     <Emoji></Emoji>
                 </div>
                 <div>

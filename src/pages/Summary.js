@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTheme } from 'styled-components';
 
 function Summary() {
 	return (
@@ -8,4 +9,4 @@ function Summary() {
     );
 }
 
-export default Summary;
+export default withTheme(Summary);

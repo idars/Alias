@@ -1,6 +1,7 @@
 import React from 'react';
-import LineListItem from 'components/LineListItem.js';
 import { withTheme } from 'styled-components';
+
+import LineListItem from 'components/LineListItem';
 
 function Timeline() {
 	return (

@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from 'graphics/logos/logo.svg';
 import styled from 'styled-components';
+
+import logo from 'graphics/logos/logo.svg';
 
 const Header = styled.header`
 	text-align: center;
