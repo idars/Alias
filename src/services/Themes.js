@@ -1,46 +1,60 @@
-/*
-import styled from 'styled-components';
-
-export const standard = styled()`
-
-`;
-*/
-
 // Margins, sizes and page layout
 
 export const Spacious = {
-	marginSmall: '32px',
-	marginMedium: '48px',
-	marginBig: '64px',
-	textSmall: '16px',
-	textMedium: '22px',
-	textBig: '30px',
-	screenSmall: '400px',
-	screenMedium: '800px'
+	icon: {
+		small: '16px',
+		medium: '24px',
+		big: '32px'
+	},
+	margin: {
+		small: '32px',
+		medium: '48px',
+		big: '64px'
+	},
+	screen: {
+		small: '400px',
+		medium: '800px',
+		big: '1200px'
+	},
+	text: {
+		small: '16px',
+		medium: '22px',
+		big: '30px'
+	}
 }
 
 // Colors
 
 export const Light = {
-	primary: '#65c2f3',
-	secondary: '#ff0000',
-    tetriary: '#ff0000',
-    foreground: '#d7d7d7',
-    background: '#fdfeff',
-	happy: '#fff800',
-	sad: '#56ccf2',
-	worry: '#976dd0',
-	angry: '#f95f62',
-	sick: '#77d353'
+	color: {
+		primary: '#65c2f3',
+		secondary: '#ff0000',
+		tetriary: '#ff0000',
+		foreground: '#d7d7d7',
+		background: '#fdfeff',
+		textDark: '#303030',
+		textLight: '#e0e0e0',
+	},
+	emoji: {
+		happy: '#fff800',
+		sad: '#56ccf2',
+		worry: '#976dd0',
+		angry: '#f95f62',
+		sick: '#77d353'
+	}
 }
 
 export const Dark = {
-    primary: '#ff0000',
-	secondary: '#ff0000',
-	tetriary: '#ff0000',
-	happy: '#fff800',
-	sad: '#65c2f3',
-	worried: '#976dd0',
-	angry: '#f95f62',
-	sick: '#77d353'
+	color: {
+		primary: '#ff0000',
+		secondary: '#ff0000',
+		tetriary: '#ff0000',
+	},
+	emoji: {
+		happy: '#fff800',
+		sad: '#65c2f3',
+		worried: '#976dd0',
+		angry: '#f95f62',
+		sick: '#77d353'
+	}
 }

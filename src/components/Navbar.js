@@ -4,17 +4,15 @@ import styled, { withTheme } from 'styled-components'
 
 const Bar = styled.div`
 	align-items: baseline;
-	background: #fdfeff;
-	color: #303030;
 	display: flex;
 	justify-content: space-between;
 	padding: 16px 12px;
 
 	.active, .title {
-		font-size: ${props => props.theme.textMedium}
+		font-size: ${props => props.theme.text.medium}
 	}
 
-	@media(max-width: ${props => props.theme.screenMedium}) {
+	@media(max-width: ${props => props.theme.screen.medium}) {
 		justify-content: space-between;
 	}
 `;
@@ -22,7 +20,7 @@ const Bar = styled.div`
 const StyledLink = styled(Link)`
 	margin: 0px 12px;
 
-	@media(max-width: ${props => props.theme.screenMedium}) {
+	@media(max-width: ${props => props.theme.screen.medium}) {
 		visibility: hidden;
 	}
 `;
@@ -40,7 +38,7 @@ class Navbar extends React.Component {
 				</div>
 				<nav>
 					<StyledNavLink to="/timeline">Tidslinje</StyledNavLink>
-					<StyledNavLink to="/procedures">Prosedyrer</StyledNavLink>
+					<StyledNavLink to="/search">Søk</StyledNavLink>
 					<StyledNavLink to="/summary">Sammendrag</StyledNavLink>
 				</nav>
 				<div>

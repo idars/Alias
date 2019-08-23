@@ -1,12 +1,7 @@
 import React from 'react';
-import Twemoji from 'react-twemoji';
 import styled, { withTheme } from 'styled-components'
 
-const StyledTwemoji = styled(Twemoji)`
-	img {
-		width: 24px;
-	}
-`;
+import Emoji from 'components/emojis/Emoji';
 
 const Meter = styled.meter`
 	height: 4px;
@@ -46,7 +41,7 @@ class EmojiScore extends React.Component {
 	render() {
 		return (
 			<Div className={this.props.className} {...this.props}>
-				<StyledTwemoji>{this.props.emoji}</StyledTwemoji>
+				<Emoji>{this.props.emoji}</Emoji>
 				<Meter min="0" max="100" value={this.props.value} />
 				<span>{this.props.value} %</span>
 			</Div>

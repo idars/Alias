@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EmojiScore from 'components/emojis/EmojiScore';
-import EmojiStatus from 'components/emojis/EmojiStatus';
 import styled, { withTheme } from 'styled-components';
+
+import Emoji from 'components/emojis/Emoji';
+import EmojiScore from 'components/emojis/EmojiScore';
 
 const itemWidth = '600px';
 
@@ -10,7 +11,8 @@ const Overlay = styled.div`
 	align-items: center;
     background: #56CCF2;
     color: #ffffff;
-    display: flex;
+	display: flex;
+	height: 28px;
 	justify-content: space-between;
 	max-width: ${itemWidth};
     padding: 8px;
@@ -55,16 +57,16 @@ class LineListItem extends React.Component {
 		return (
 			<div className={this.props.className}>
 				<Overlay>
-					<Link to="/">{this.props.name || 'Element uten navn'}</Link>
-					<EmojiStatus onClick={this.toggleDropdown}>{this.props.emojiStatus}</EmojiStatus>
+					<Link to={"/procedure/" + this.props.id}>{this.props.name || 'Element uten navn'}</Link>
+					<Emoji onClick={this.toggleDropdown}>{this.props.emojiStatus}</Emoji>
 				</Overlay>
 				<Underlay active={this.state.dropdown}>
 					<div>
-						<EmojiScore emoji="😀" value={this.getRating(0)} gaugeColor={this.props.theme.happy} />
-						<EmojiScore emoji="😢" value={this.getRating(1)} gaugeColor={this.props.theme.sad} />
-						<EmojiScore emoji="😨" value={this.getRating(2)} gaugeColor={this.props.theme.worry} />
-						<EmojiScore emoji="😡" value={this.getRating(3)} gaugeColor={this.props.theme.angry} />
-						<EmojiScore emoji="🤢" value={this.getRating(4)} gaugeColor={this.props.theme.sick} />
+						<EmojiScore emoji="😀" value={this.getRating(0)} gaugeColor={this.props.theme.emoji.happy} />
+						<EmojiScore emoji="😢" value={this.getRating(1)} gaugeColor={this.props.theme.emoji.sad} />
+						<EmojiScore emoji="😨" value={this.getRating(2)} gaugeColor={this.props.theme.emoji.worry} />
+						<EmojiScore emoji="😡" value={this.getRating(3)} gaugeColor={this.props.theme.emoji.angry} />
+						<EmojiScore emoji="🤢" value={this.getRating(4)} gaugeColor={this.props.theme.emoji.sick} />
 					</div>
 					<Link to="/">Vis historikk</Link>
 				</Underlay>
