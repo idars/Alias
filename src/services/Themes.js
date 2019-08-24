@@ -22,9 +22,9 @@ export const Spacious = {
 		big: '30px'
 	},
 	thickness: {
-		small: '1px',
-		medium: '2px',
-		big: '3px'
+		small: 1,
+		medium: 2,
+		big: 3
 	}
 }
 
