@@ -79,7 +79,7 @@ class Procedure extends React.Component {
                 <Header>
                     <X onClick={this.props.history.goBack} />
                     <span>{this.props.procedureName || 'Prosedyre uten navn'}</span>
-                    <Emoji></Emoji>
+                    <Emoji inactive />
                 </Header>
                 <Main>
                     <ArrowLeft onClick={this.previousPage} />

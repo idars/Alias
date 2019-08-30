@@ -13,7 +13,6 @@ const Div = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	margin: 8px;
 
 	${Meter} {
 		/* Gauge color (Chromium) */
@@ -41,7 +40,7 @@ class EmojiScore extends React.Component {
 	render() {
 		return (
 			<Div className={this.props.className} {...this.props}>
-				<Emoji>{this.props.emoji}</Emoji>
+				<Emoji symbol={this.props.symbol} />
 				<Meter min="0" max="100" value={this.props.value} />
 				<span>{this.props.value} %</span>
 			</Div>

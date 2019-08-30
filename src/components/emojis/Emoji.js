@@ -19,21 +19,12 @@ const StyledTwemoji = styled(Twemoji)`
 `;
 
 class Emoji extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			inactive: !this.props.children
-		};
-	}
-
-	init() {
-		return this.state.inactive ? "😀" : this.props.children;
-	}
-
 	render() {
 		return (
-			<div className={this.props.className} {...this.props}>
-				<StyledTwemoji inactive={this.state.inactive ? 1 : 0}>{this.init()}</StyledTwemoji>
+			<div className={this.props.className} role="img">
+				<StyledTwemoji inactive={this.props.inactive ? 1 : 0}>
+					{this.props.symbol || '😀'}
+				</StyledTwemoji>
 			</div>
 		);
 	}

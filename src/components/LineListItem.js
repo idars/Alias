@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from 'styled-components';
 
-import Emoji from 'components/emojis/Emoji';
+import EmojiRow from 'components/emojis/EmojiRow';
 import EmojiScore from 'components/emojis/EmojiScore';
 
 const itemWidth = '600px';
@@ -26,9 +26,14 @@ const Underlay = styled.div`
 	justify-content: space-between;
 	max-width: ${itemWidth};
 	padding: 8px;
-	
+`;
+
+const EmojiScoreRow = styled.div`
+	display: flex;
+	flex-direction: row;
+
 	> div {
-		display: flex;
+		margin: 8px;
 	}
 `;
 
@@ -39,12 +44,12 @@ class LineListItem extends React.Component {
 			dropdown: false
 		};
 
+		this.getRating = this.getRating.bind(this);
 		this.toggleDropdown = this.toggleDropdown.bind(this);
 	}
 
-	getRating(index) {
-		if (this.props.rating === undefined) return 0;
-		return this.props.rating[index];
+	getRating() {
+		return (this.props.rating !== undefined) ? this.props.rating : 0;
 	}
 
 	toggleDropdown(e) {
@@ -57,22 +62,28 @@ class LineListItem extends React.Component {
 		return (
 			<div className={this.props.className}>
 				<Overlay>
-					<Link to={"/procedure/" + this.props.id}>{this.props.name || 'Element uten navn'}</Link>
-					<Emoji onClick={this.toggleDropdown}>{this.props.emojiStatus}</Emoji>
+					<Link to={"/procedure/" + this.props.id}>
+						{this.props.procedureName}
+					</Link>
+					<EmojiRow onClick={this.toggleDropdown} rating={this.props.rating} />
 				</Overlay>
 				<Underlay active={this.state.dropdown}>
-					<div>
-						<EmojiScore emoji="😀" value={this.getRating(0)} gaugeColor={this.props.theme.emoji.happy} />
-						<EmojiScore emoji="😢" value={this.getRating(1)} gaugeColor={this.props.theme.emoji.sad} />
-						<EmojiScore emoji="😨" value={this.getRating(2)} gaugeColor={this.props.theme.emoji.worry} />
-						<EmojiScore emoji="😡" value={this.getRating(3)} gaugeColor={this.props.theme.emoji.angry} />
-						<EmojiScore emoji="🤢" value={this.getRating(4)} gaugeColor={this.props.theme.emoji.sick} />
-					</div>
+					<EmojiScoreRow>
+						<EmojiScore symbol="😀" value={this.getRating()[0]} gaugeColor={this.props.theme.emoji.happy} />
+						<EmojiScore symbol="😢" value={this.getRating()[1]} gaugeColor={this.props.theme.emoji.sad} />
+						<EmojiScore symbol="😨" value={this.getRating()[2]} gaugeColor={this.props.theme.emoji.worry} />
+						<EmojiScore symbol="😡" value={this.getRating()[3]} gaugeColor={this.props.theme.emoji.angry} />
+						<EmojiScore symbol="🤢" value={this.getRating()[4]} gaugeColor={this.props.theme.emoji.sick} />
+					</EmojiScoreRow>
 					<Link to="/">Vis historikk</Link>
 				</Underlay>
 			</div>
 		);
 	}
 }
+
+LineListItem.defaultProps = {
+	name: 'Element uten navn'
+};
 
 export default withTheme(LineListItem);
