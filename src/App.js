@@ -19,7 +19,8 @@ const GlobalStyle = createGlobalStyle`
 			"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 
 			"Helvetica Neue", sans-serif;
 		background: ${props => props.theme.color.background};
-		color: ${props => props.theme.color.textDark}
+		color: ${props => props.theme.color.textDark};
+		text-align: center;
 	}
 
 	code {

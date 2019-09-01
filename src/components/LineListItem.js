@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from 'styled-components';
 
+import Emoji from 'components/emojis/Emoji';
 import EmojiRow from 'components/emojis/EmojiRow';
 import EmojiScore from 'components/emojis/EmojiScore';
+import EmojiScoreRow from 'components/emojis/EmojiScoreRow';
 
 const itemWidth = '600px';
 
@@ -28,14 +30,12 @@ const Underlay = styled.div`
 	padding: 8px;
 `;
 
-const EmojiScoreRow = styled.div`
-	display: flex;
-	flex-direction: row;
-
-	> div {
-		margin: 8px;
+const tos = [
+	{
+		date: null,
+		values: []
 	}
-`;
+];
 
 class LineListItem extends React.Component {
 	constructor(props) {
@@ -43,13 +43,23 @@ class LineListItem extends React.Component {
 		this.state = {
 			dropdown: false
 		};
-
-		this.getRating = this.getRating.bind(this);
 		this.toggleDropdown = this.toggleDropdown.bind(this);
 	}
 
-	getRating() {
-		return (this.props.rating !== undefined) ? this.props.rating : 0;
+	static defaultProps = {
+		id: null,
+		name: 'Element uten navn',
+		scheduledAt: null,
+		userRatings: [{
+			date: null,
+			values: [0, 0, 0, 0, 0]
+		}]
+	};
+
+	hasBeenRatedSinceScheduledTime() {
+		let dateScheduled = new Date(this.props.scheduledAt);
+		let dateRated = new Date(this.props.userRatings[0].date);
+		return dateScheduled < dateRated;
 	}
 
 	toggleDropdown(e) {
@@ -58,32 +68,35 @@ class LineListItem extends React.Component {
 		}));
 	}
 
+	shouldDisplayRating() {
+		let dateScheduled = new Date(this.props.scheduledAt);
+
+		// Display if the scheduled time has already passed
+		return dateScheduled < Date.now();
+	}
+
 	render() {
 		return (
 			<div className={this.props.className}>
 				<Overlay>
 					<Link to={"/procedure/" + this.props.id}>
-						{this.props.procedureName}
+						{this.props.name}
 					</Link>
-					<EmojiRow onClick={this.toggleDropdown} rating={this.props.rating} />
+					{
+						this.shouldDisplayRating() && (
+							this.hasBeenRatedSinceScheduledTime()
+								? <EmojiRow onClick={this.toggleDropdown} rating={this.props.userRatings[0].values} />
+								: <EmojiRow onClick={this.toggleDropdown} />
+						)
+					}
 				</Overlay>
 				<Underlay active={this.state.dropdown}>
-					<EmojiScoreRow>
-						<EmojiScore symbol="😀" value={this.getRating()[0]} gaugeColor={this.props.theme.emoji.happy} />
-						<EmojiScore symbol="😢" value={this.getRating()[1]} gaugeColor={this.props.theme.emoji.sad} />
-						<EmojiScore symbol="😨" value={this.getRating()[2]} gaugeColor={this.props.theme.emoji.worry} />
-						<EmojiScore symbol="😡" value={this.getRating()[3]} gaugeColor={this.props.theme.emoji.angry} />
-						<EmojiScore symbol="🤢" value={this.getRating()[4]} gaugeColor={this.props.theme.emoji.sick} />
-					</EmojiScoreRow>
+					<EmojiScoreRow rating={this.props.userRatings[0].values} />
 					<Link to="/">Vis historikk</Link>
 				</Underlay>
 			</div>
 		);
 	}
 }
-
-LineListItem.defaultProps = {
-	name: 'Element uten navn'
-};
 
 export default withTheme(LineListItem);
